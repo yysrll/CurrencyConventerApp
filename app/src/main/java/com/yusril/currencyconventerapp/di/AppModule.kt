@@ -21,7 +21,7 @@ object AppModule {
     @Singleton
     @Provides
     fun provideCurrencyApi(): CurrencyApi = Retrofit.Builder()
-        .baseUrl("https://api.apilayer.com/exchangerates_data")
+        .baseUrl("https://api.apilayer.com/exchangerates_data/")
         .addConverterFactory(GsonConverterFactory.create())
         .build()
         .create(CurrencyApi::class.java)

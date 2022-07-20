@@ -1,6 +1,5 @@
 package com.yusril.currencyconventerapp.main
 
-import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.yusril.currencyconventerapp.data.models.Rates
@@ -47,7 +46,7 @@ class MainViewModel @Inject constructor(
                 is Resource.Error -> _conversion.value = CurrencyEvent.Error(result.message!!)
                 is Resource.Success -> {
                     val rates = result.data!!.rates
-                    val rate = getRateCurrency(toCurrency, rates)
+                    val rate = getRateForCurrency(toCurrency, rates)
                     if (rate == null) {
                         _conversion.value = CurrencyEvent.Error("Currency not found")
                     } else {
@@ -61,39 +60,39 @@ class MainViewModel @Inject constructor(
     }
 
 
-    private fun getRateCurrency(currency: String, rates: Rates) = when(currency) {
-        "CAD" -> rates.CAD
-        "HKD" -> rates.HKD
-        "ISK" -> rates.ISK
-        "EUR" -> rates.EUR
-        "PHP" -> rates.PHP
-        "DKK" -> rates.DKK
-        "HUF" -> rates.HUF
-        "CZK" -> rates.CZK
-        "AUD" -> rates.AUD
-        "RON" -> rates.RON
-        "SEK" -> rates.SEK
-        "IDR" -> rates.IDR
-        "INR" -> rates.INR
-        "BRL" -> rates.BRL
-        "RUB" -> rates.RUB
-        "HRK" -> rates.HRK
-        "JPY" -> rates.JPY
-        "THB" -> rates.THB
-        "CHF" -> rates.CHF
-        "SGD" -> rates.SGD
-        "PLN" -> rates.PLN
-        "BGN" -> rates.BGN
-        "CNY" -> rates.CNY
-        "NOK" -> rates.NOK
-        "NZD" -> rates.NZD
-        "ZAR" -> rates.ZAR
-        "USD" -> rates.USD
-        "MXN" -> rates.MXN
-        "ILS" -> rates.ILS
-        "GBP" -> rates.GBP
-        "KRW" -> rates.KRW
-        "MYR" -> rates.MYR
+    private fun getRateForCurrency(currency: String, rates: Rates) = when (currency) {
+        "CAD" -> rates.cAD
+        "HKD" -> rates.hKD
+        "ISK" -> rates.iSK
+        "EUR" -> rates.eUR
+        "PHP" -> rates.pHP
+        "DKK" -> rates.dKK
+        "HUF" -> rates.hUF
+        "CZK" -> rates.cZK
+        "AUD" -> rates.aUD
+        "RON" -> rates.rON
+        "SEK" -> rates.sEK
+        "IDR" -> rates.iDR
+        "INR" -> rates.iNR
+        "BRL" -> rates.bRL
+        "RUB" -> rates.rUB
+        "HRK" -> rates.hRK
+        "JPY" -> rates.jPY
+        "THB" -> rates.tHB
+        "CHF" -> rates.cHF
+        "SGD" -> rates.sGD
+        "PLN" -> rates.pLN
+        "BGN" -> rates.bGN
+        "CNY" -> rates.cNY
+        "NOK" -> rates.nOK
+        "NZD" -> rates.nZD
+        "ZAR" -> rates.zAR
+        "USD" -> rates.uSD
+        "MXN" -> rates.mXN
+        "ILS" -> rates.iLS
+        "GBP" -> rates.gBP
+        "KRW" -> rates.kRW
+        "MYR" -> rates.mYR
         else -> null
     }
 }
